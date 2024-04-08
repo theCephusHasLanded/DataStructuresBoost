@@ -15,7 +15,7 @@ func NewGraph() *Graph {
 }
 
 // insert adds a node to the graph and initializes its adjacency list if not present.
-func (g *Graph) insert(val int) {
+func (g *Graph) Insert(val int) {
 	if _, exists := g.nodes[val]; !exists {
 		g.nodes[val] = struct{}{}
 		g.edges[val] = make(map[int]struct{})
@@ -23,7 +23,7 @@ func (g *Graph) insert(val int) {
 }
 
 // remove deletes a node from the graph and removes it from other nodes' adjacency lists.
-func (g *Graph) remove(val int) {
+func (g *Graph) Remove(val int) {
 	if _, exists := g.nodes[val]; exists {
 		delete(g.nodes, val)
 		delete(g.edges, val)

@@ -1,6 +1,4 @@
-package go_data_structures
-
-
+package go_data_structures_no_generics
 
 type StackInterface[T any] interface {
 	Top() T      // returns top item in stack. O(1)
@@ -19,8 +17,13 @@ func NewStack() *Stack {
 }
 
 func (s *Stack) Top() interface{} {
-    return s.list.PeekFront() // Assuming PeekFront returns the element at the front of the list. O(1)
+    val, ok := s.list.PeekFront()
+    if !ok {
+        return nil // Handle the case when the stack is empty
+    }
+    return val
 }
+
 
 func (s *Stack) Push(val interface{}) {
     s.list.PushFront(val) // Assuming PushFront adds an element to the front of the list. O(1)
@@ -37,4 +40,3 @@ func (s *Stack) Empty() bool {
 func (s *Stack) Size() int {
     return s.list.Count() // Assuming Count returns the number of elements in the list. O(1) or O(n)
 }
-

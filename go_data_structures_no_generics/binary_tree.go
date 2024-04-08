@@ -61,15 +61,15 @@ func (bst *BinarySearchTree) insertNode(node *BinarySearchTreeNode, data Pair) *
     return node
 }
 
-func insertNode(node *BinarySearchTreeNode, pair Pair) *BinarySearchTreeNode {
+func InsertNode(node *BinarySearchTreeNode, pair Pair) *BinarySearchTreeNode {
     if node == nil {
         return &BinarySearchTreeNode{Data: pair}
     }
     // Assume string keys should be ordered lexicographically
     if pair.Key < node.Data.Key {
-        node.Left = insertNode(node.Left, pair)
+        node.Left = InsertNode(node.Left, pair)
     } else if pair.Key > node.Data.Key {
-        node.Right = insertNode(node.Right, pair)
+        node.Right = InsertNode(node.Right, pair)
     }
     // Note: This example does not handle the case where pair.Key == node.Data.Key
     return node

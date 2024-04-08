@@ -12,6 +12,7 @@ type SinglyLinkedListInterface interface {
     Tail() *SingleLinkNode
     Empty() bool
     Size() int
+	PushFront(val interface{})
     PeekFront() (interface{}, bool) // Assuming it returns the first item and its existence.
     PushBack(val int)       // Method to add an item at the end.
     PopFront() (int, bool)  // Method to remove and return the first item.
@@ -125,6 +126,18 @@ func (sll *SinglyLinkedList) Empty() bool {
 	return sll.head == nil
 }
 
+func (sll *SinglyLinkedList) PushFront(val interface{}) {
+	valInt, ok := val.(int)
+	if !ok {
+		// Handle the error if val is not of type int
+		panic("val is not an int") // Or return an error, depending on your function signature
+	}
+	newNode := &SingleLinkNode{Data: valInt, Next: nil}
+    sll.head = newNode
+    // Update any other necessary state (e.g., size if tracked)
+}
+
+
 func (sll *SinglyLinkedList) PeekFront() (interface{}, bool) {
     if sll.head == nil {
         return nil, false
@@ -151,7 +164,7 @@ func (sll *SinglyLinkedList) IsEmpty() bool {
 }
 
 func (sll *SinglyLinkedList) Size() int {
-    return sll.Size() // Utilize your existing Size method.
+    return sll.size // Utilize your existing Size method.
 }
 
 func (sll *SinglyLinkedList) Count() int {

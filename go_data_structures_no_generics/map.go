@@ -48,7 +48,7 @@ func (m *Map) hash(key string) int {
 }
 
 // resize doubles the size of the underlying array and rehashes all keys.
-func (m *Map) resize() {
+func (m *Map) Resize() {
     newArrSize := len(m.arr) * 2
     newArr := make([]*BinarySearchTree, newArrSize)
     for _, tree := range m.arr {
