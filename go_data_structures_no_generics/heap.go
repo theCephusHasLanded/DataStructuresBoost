@@ -1,26 +1,21 @@
-package go_data_structures
+package go_data_structures_no_generics
 
-import (
-	"golang.org/x/exp/constraints"
-)
-
-type MaxHeap[T constraints.Ordered] struct {
-	items []T
+type MaxHeap struct {
+	items []int
 }
 
-func NewMaxHeap[T constraints.Ordered]() *MaxHeap[T] {
-	return &MaxHeap[T]{}
+func NewMaxHeap() *MaxHeap {
+	return &MaxHeap{}
 }
 
-func (h *MaxHeap[T]) Peek() T {
+func (h *MaxHeap) Peek() int {
 	if len(h.items) == 0 {
-		var zero T
-		return zero
+		return 0 // Assuming 0 as the default "zero" value for int
 	}
 	return h.items[0]
 }
 
-func (h *MaxHeap[T]) RemoveTop() {
+func (h *MaxHeap) RemoveTop() {
 	if len(h.items) == 0 {
 		return
 	}
@@ -29,12 +24,12 @@ func (h *MaxHeap[T]) RemoveTop() {
 	h.siftDown(0)
 }
 
-func (h *MaxHeap[T]) Insert(val T) {
+func (h *MaxHeap) Insert(val int) {
 	h.items = append(h.items, val)
 	h.siftUp(len(h.items) - 1)
 }
 
-func (h *MaxHeap[T]) Remove(val T) {
+func (h *MaxHeap) Remove(val int) {
 	for i, item := range h.items {
 		if item == val {
 			h.items[i] = h.items[len(h.items)-1]
@@ -45,19 +40,19 @@ func (h *MaxHeap[T]) Remove(val T) {
 	}
 }
 
-func (h *MaxHeap[T]) Empty() bool {
+func (h *MaxHeap) Empty() bool {
 	return len(h.items) == 0
 }
 
-func (h *MaxHeap[T]) Size() int {
+func (h *MaxHeap) Size() int {
 	return len(h.items)
 }
 
-func (h *MaxHeap[T]) Sorted() []T {
-	originalItems := make([]T, len(h.items))
+func (h *MaxHeap) Sorted() []int {
+	originalItems := make([]int, len(h.items))
 	copy(originalItems, h.items)
 
-	var sorted []T
+	var sorted []int
 	for len(h.items) > 0 {
 		sorted = append(sorted, h.Peek())
 		h.RemoveTop()
@@ -67,7 +62,7 @@ func (h *MaxHeap[T]) Sorted() []T {
 	return sorted
 }
 
-func (h *MaxHeap[T]) siftUp(index int) {
+func (h *MaxHeap) siftUp(index int) {
 	for index > 0 {
 		parentIndex := (index - 1) / 2
 		if h.items[index] <= h.items[parentIndex] {
@@ -78,7 +73,7 @@ func (h *MaxHeap[T]) siftUp(index int) {
 	}
 }
 
-func (h *MaxHeap[T]) siftDown(index int) {
+func (h *MaxHeap) siftDown(index int) {
 	lastIndex := len(h.items) - 1
 	for index < lastIndex {
 		leftChildIndex := 2*index + 1
