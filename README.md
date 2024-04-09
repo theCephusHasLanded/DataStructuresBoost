@@ -1,19 +1,6 @@
 # Data Structures Overview
 
-      [Tree]                     [Graph]---[Cycle]
-       /|\                        /  \
-      / | \                      /    \
-   [BT] |  [Heap]               [D]    [U]
-        |                        \
-        |                         \
-  [Linked List]---[Stack]---[Queue]---[Deque]---[Priority Queue]
-    |       \         |         |
-    |        \        |         |
-  [Singly]  [Doubly] [Node]   [Stacked LL]
-                |
-                |
-               [Map]---[Set]---[Pair]
-
+![data structure tldr](image.png)
 This document provides an overview of several fundamental data structures included in this IDE project. Each data structure is briefly described, highlighting its primary use case and a real-world example of where it might be applied.
 
 ## Binary Tree
