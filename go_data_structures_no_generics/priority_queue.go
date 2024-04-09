@@ -77,3 +77,5 @@ func (pq *PriorityQueue) Empty() bool {
 func (pq *PriorityQueue) Size() int {
     return pq.Len()
 }
+
+
