@@ -311,9 +311,9 @@ func main() {
 	// Print out the Pair
 	fmt.Println("Pair contents:", pair)
 }
-// TODO: Add additional fmt tests for any methods not covered here
 
-pq := go_data_structures_no_generics.NewPriorityQueue()
+// TODO: Add additional fmt tests for any methods not covered here
+    pq := go_data_structures_no_generics.NewPriorityQueue()
 
 	// Test Enqueue
 	fmt.Println("Enqueuing items with priority")
@@ -340,3 +340,119 @@ pq := go_data_structures_no_generics.NewPriorityQueue()
 
 	// Check if queue is empty after dequeuing everything
 	fmt.Println("Is the queue empty after dequeuing everything?", pq.Empty())
+
+    // TODO: Add additional fmt tests for any methods not covered here
+
+    queue := go_data_structures_no_generics.NewQueue()
+    altQueue := go_data_structures_no_generics.NewAlternateQueue()
+
+    // Testing standard Queue
+    fmt.Println("Testing standard Queue")
+    queue.Enqueue(10)
+    queue.Enqueue(20)
+    queue.Enqueue(30)
+    fmt.Println("Front of queue:", queue.Front()) // Expected: 10
+    fmt.Println("Queue size:", queue.Size())      // Expected: 3
+    queue.Dequeue()
+    fmt.Println("Front of queue after one dequeue:", queue.Front()) // Expected: 20
+    fmt.Println("Queue size after one dequeue:", queue.Size())      // Expected: 2
+    fmt.Println("Is queue empty?", queue.Empty())                   // Expected: false
+    queue.Dequeue()
+    queue.Dequeue()
+    fmt.Println("Is queue empty after clearing?", queue.Empty())    // Expected: true
+
+    // Testing AlternateQueue
+    fmt.Println("\nTesting AlternateQueue")
+    altQueue.Enqueue("apple")
+    altQueue.Enqueue("banana")
+    altQueue.Enqueue("cherry")
+    fmt.Println("Front of alternate queue:", altQueue.Front()) // Expected: "apple"
+    fmt.Println("Alternate queue size:", altQueue.Size())      // Expected: 3
+    altQueue.Dequeue()
+    fmt.Println("Front of alternate queue after one dequeue:", altQueue.Front()) // Expected: "banana"
+    fmt.Println("Alternate queue size after one dequeue:", altQueue.Size())      // Expected: 2
+    fmt.Println("Is alternate queue empty?", altQueue.Empty())                   // Expected: false
+    altQueue.Dequeue()
+    altQueue.Dequeue()
+    fmt.Println("Is alternate queue empty after clearing?", altQueue.Empty())    // Expected: true
+}
+
+// TODO: Add additional fmt tests for any methods not covered here
+
+set := go_data_structures_no_generics.NewSet(10) // Initialize set with 10 buckets
+
+    // Test Insert
+    fmt.Println("Inserting values into the set")
+    set.Insert(10)
+    set.Insert(20)
+    set.Insert(30)
+    set.Insert(40)
+    set.Insert(10) // Duplicate, should not increase the size
+
+    // Test Contains
+    fmt.Println("Does the set contain 10?", set.Contains(10)) // Expected: true
+    fmt.Println("Does the set contain 50?", set.Contains(50)) // Expected: false
+
+    // Test Remove
+    fmt.Println("Removing 20 from the set")
+    set.Remove(20)
+    fmt.Println("Does the set contain 20 after removal?", set.Contains(20)) // Expected: false
+
+    // Test Empty
+    fmt.Println("Is the set empty?", set.Empty()) // Expected: false
+
+    // Test Size
+    fmt.Println("Size of the set:", set.Size()) // Expected: 3, after one removal
+
+    // Test Values
+    fmt.Println("Values in the set:", set.Values())
+
+    // Remove all items
+    set.Remove(10)
+    set.Remove(30)
+    set.Remove(40)
+    fmt.Println("Is the set empty after removing all items?", set.Empty()) // Expected: true
+
+    // Re-insert and test resize
+    for i := 0; i < 50; i++ {
+        set.Insert(i)
+    }
+    fmt.Println("Size of the set after inserting 50 items:", set.Size()) // Expected: 50
+    fmt.Println("Testing resize by checking new values presence:")
+    fmt.Println("Does the set contain 25?", set.Contains(25)) // Expected: true
+}
+    // TODO: Add additional fmt tests for any methods not covered here
+    stack := go_data_structures_no_generics.NewStack()
+
+    // Test Push
+    fmt.Println("Pushing items onto the stack")
+    stack.Push("Hello")
+    stack.Push(42)
+    stack.Push([3]int{1, 2, 3})
+
+    // Test Top
+    topItem := stack.Top()
+    fmt.Println("Item at the top of the stack:", topItem) // Expected: [3]int{1, 2, 3}
+
+    // Test Size
+    fmt.Println("Current size of the stack:", stack.Size()) // Expected: 3
+
+    // Test Empty
+    fmt.Println("Is the stack empty?", stack.Empty()) // Expected: false
+
+    // Test Pop
+    fmt.Println("Popping items from the stack:")
+    for !stack.Empty() {
+        top := stack.Top()
+        stack.Pop()
+        fmt.Println("Popped:", top)
+        fmt.Println("New top after pop:", stack.Top())
+    }
+
+    // Check if stack is empty after popping all items
+    fmt.Println("Is the stack empty after all pops?", stack.Empty()) // Expected: true
+
+    // Test Empty and Size after clearing stack
+    fmt.Println("Final check - Is the stack empty?", stack.Empty()) // Expected: true
+    fmt.Println("Final check - Size of the stack:", stack.Size())   // Expected: 0
+}
